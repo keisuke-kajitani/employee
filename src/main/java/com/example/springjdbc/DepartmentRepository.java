@@ -27,7 +27,7 @@ String sql = """
         SELECT id
         ,name
          FROM departments
-         
+         WHERE id=:id
         """;
     SqlParameterSource param=new MapSqlParameterSource().addValue("id", id);
     Department department = template.queryForObject(sql, param,DEPARTMENT_ROW_MAPPER);

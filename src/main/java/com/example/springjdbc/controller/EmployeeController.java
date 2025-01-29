@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.example.springjdbc.controller.service.EmployeeService;
@@ -32,5 +33,11 @@ for(Employee emp:employeeList){
     System.out.println(emp);
 }
 return "finished";
+}
+@RequestMapping("/list")
+public String listEmployees(Model model) {  
+ List<Employee> employeeList = service.findAll();  
+ model.addAttribute("employees", employeeList);  
+return "employeeList";  
 }
 }
